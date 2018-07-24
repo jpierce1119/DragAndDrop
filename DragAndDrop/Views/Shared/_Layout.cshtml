@@ -14,22 +14,16 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                @Html.ActionLink("Task Assigner", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <p class="navbar-brand">Task Assigner</p>
+                <p class="navbar-text status">Loading...</p>
             </div>
-            @*<div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-            </div>*@
         </div>
     </div>
-    <div class="container body-content">
+    <div class="container body-content" hidden>
         @RenderBody()
         <hr />
         <footer>
-            <p class="text-center">&copy; @DateTime.Now.Year - Task Assigner by Maciek Skulimowski</p>
+            <p class="text-center">&copy; @DateTime.Now.Year - Task Assigner</p>
         </footer>
     </div>
 

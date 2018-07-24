@@ -24,7 +24,7 @@ textarea {
 }
 
 .task-container {
-    margin-top: 10px;
+    margin-top: 20px;
     padding-top: 10px;
     padding-bottom: 20px;
     background-color: #1565C0;
@@ -34,6 +34,7 @@ textarea {
 }
 
 .task-list button {
+    padding: 0px;
     background-color: #1565C0;
     color: white;
 }
@@ -46,4 +47,24 @@ textarea {
     background-color: #0D47A1;
     color: white;
     cursor: move;
+}
+
+.bottom-right {
+    position: absolute;
+    bottom: 8px;
+    right: 32px;
+    font-size: 30px;
+    color: white;
+}
+
+#user_pools div:nth-of-type(2) {
+    margin-top: 50px;
+}
+
+#user_pools div:nth-of-type(3) {
+    margin-top: 100px;
+}
+
+.status {
+    color: grey;
 }

@@ -8,9 +8,9 @@ using System.Web;
 
 namespace DragAndDrop.Data
 {
-    public class AppContext : DbContext
+    public class AppDbContext : DbContext
     {
-        public AppContext() : base("AppContext")
+        public AppDbContext() : base("AppDbContext")
         {
         }
 

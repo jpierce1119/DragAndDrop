@@ -8,20 +8,22 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="col-md-4 col-xs-12">
+<div class="row" id="user_pools">
+    <div class="col-md-4 col-xs-12 col-md-push-4">
         <div class="task-container">
             <h4>User 1</h4>
             <div id="user1" class="task-list">
             </div>
+            <div class="bottom-right">1</div>
         </div>
     </div>
 
-    <div class="col-md-4 col-xs-12">
+    <div class="col-md-4 col-xs-12 col-md-pull-4">
         <div class="task-container">
             <h4>User 2</h4>
             <div id="user2" class="task-list">
             </div>
+            <div class="bottom-right">2</div>
         </div>
     </div>
 
@@ -30,6 +32,7 @@
             <h4>User 3</h4>
             <div id="user3" class="task-list">
             </div>
+            <div class="bottom-right">3</div>
         </div>
     </div>
 </div>
@@ -37,7 +40,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
         fetchTasks();
-        
+        showContent();
     })
 
     var fetchTasks = function () {
@@ -70,10 +73,26 @@
             e.preventDefault();
             var data = e.originalEvent.dataTransfer.getData('Text');
             this.appendChild(document.getElementById(data));
+            saveChanges(data, this.id);
         });
         $('.task-list button').on('dragstart', function (e) {
             e.originalEvent.dataTransfer.setData('Text', e.target.id);
         });
+    }
+
+    var saveChanges = function (taskNo, userNo) {
+        var taskID = taskNo.substring(4);
+        var userID = (userNo === "unassigned") ? null : userNo.substring(4);
+
+        $('.status').text('Saving changes...');
+        $.post("api/Tasks", { TaskID: taskID, UserID: userID })
+            .done(function (data) { $('.status').text('Synchronized'); })
+            .fail(function (data) { $('.status').text('An error occurred'); });
+    }
+
+    var showContent = function () {
+        $('.status').text('Synchronized');
+        $('.body-content').show();
     }
     
 </script>
