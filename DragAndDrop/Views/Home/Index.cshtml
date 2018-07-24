@@ -40,11 +40,13 @@
 <script type="text/javascript">
     $(document).ready(function () {
         fetchTasks();
-        showContent();
     })
 
     var fetchTasks = function () {
-        $.get("api/Tasks").done(function (result) { sortTasks(result) });
+        $.get("api/Tasks").done(function (result) {
+            sortTasks(result);
+            showContent();
+        });
     }
 
     var sortTasks = function (tasks) {
